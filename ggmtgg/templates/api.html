@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h3> API usage: </h3>
+<div class="text">
+  <p> matchtick.com provides a lightweight and convenient http json api for esport match and tournament data. </p>
+  <h2>Getting match data:</h2>
+  <p> To retrieve data for matches use <code>/tick/(game_name)</code> end point.
+  Where (game_name) can be anything of this list: </p>
+  <code>['dota2', 'counterstrike', 'hearthstone', 'heroesofthestorm', 'lol', 'overwatch', 'starcraft2', 'all']</code>
+  <p> For example to retrieve the latest dota2 matches you can use
+    <a href="http://matchtick.com/tick/dota2"><code>http://matchtick.com/tick/dota2.</code></a> </p>
+  <h2>Getting tournament data:</h2>
+  <p> To retrieve data for tournaments or other events use <code>/tournament/(game_name)</code> end point.
+    Where (game_name) can be anything of this list: </p>
+  <code>['dota2', 'counterstrike', 'overwatch']</code>
+</div>
+{% endblock content %}

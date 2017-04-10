@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+{% for name, game in config.GAMES.items()|sort %}
+<div class="game">
+  <h2>{{name}}</h2>
+  <a href="/tick/{{game}}">matches</a>
+  <a href="/tournament/{{game}}">tournaments</a>
+</div>
+{% endfor %}
+{% endblock content %}
