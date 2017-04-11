@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="ticker-wrapper">
+  <h2>{{data[0]['game']}} matchticker</h2>
+  <table class="ticker">
+    {% for d in data %}
+    <tr>
+      <td class="team1">
+        <img class="flag" title="{{d['t1_country']}}" src="{{ url_for('static', filename='flags/{}.svg'.format(d['t1_country_short'].lower())) }}">
+        {{d['t1']}}
+      </td>
+      <td>vs</td>
+      <td class="team2">
+        {{d['t2']}}
+        <img class="flag" title="{{d['t2_country']}}" src="{{ url_for('static', filename='flags/{}.svg'.format(d['t2_country_short'].lower())) }}">
+      </td>
+      <td class="time{{' live' if d['time'] =='Live' else ''}}">{{d['time']}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock content %}

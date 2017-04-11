@@ -49,9 +49,34 @@ div.footer a{
 
 div.game {
   display: inline-block;
+  width: 150px;
   margin: 10px 20px ;
 }
 
 div.game h2{
   margin-bottom: 3px;
+}
+
+table.ticker {
+  display: inline-block;
+  text-align: center;
+  border-collapse: collapse;
+}
+table.ticker th{
+  text-align: center;
+}
+
+td.live {
+  color: green;
+}
+
+table.ticker img.flag {
+  width: 12px;
+  height: 12px;
+}
+
+table.ticker tr, table.ticker td {
+  padding: 5px 20px;
+  border-bottom: 1px solid @content;
+  border-top: 1px solid @content;
 }

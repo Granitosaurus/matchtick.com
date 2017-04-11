@@ -30,18 +30,25 @@ def index():
 
 
 @app.route('/tick/<string:game>')
-@api_limit
 def tick(game):
+    data = redis.get(f'ggmt_tick_{game}')
+    data = json.loads(data)
+    return render_template('tick.html', data=data)
+
+
+@app.route('/api/tick/<string:game>')
+@api_limit
+def api_tick(game):
     if game not in GosuTicker.games:
         return error(f'unknown_game;choose from: {GosuTicker.games}')
     return redis.get(f'ggmt_tick_{game}')
 
 
-@app.route('/tournament/<string:game>/<string:time>')
-@app.route('/tournament/<string:game>', defaults={'time': 'all'})
-@app.route('/tournament', defaults={'time': None, 'game': None})
+@app.route('/api/tournament/<string:game>/<string:time>')
+@app.route('/api/tournament/<string:game>', defaults={'time': 'all'})
+@app.route('/api/tournament', defaults={'time': None, 'game': None})
 @api_limit
-def tournament(game, time):
+def api_tournament(game, time):
     if game not in LiquidBracketDownloader.games:
         return error(f'unknown_game;choose from: {LiquidBracketDownloader.games}',
                      suggestion='/tournament/game')
